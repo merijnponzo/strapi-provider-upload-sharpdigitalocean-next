@@ -1,7 +1,7 @@
 {
   "name": "strapi-provider-upload-sharpdigitalocean-next",
-  "version": "4.1.8",
-  "description": "upload and rezize the original image to digital ocean spaces, with one thumbnail variant, resized by sharp",
+  "version": "4.0.5",
+  "description": "upload and rezize the original image to digital ocean spaces, with one thumbnail variant, resized by sharp (Strapi v4?)",
   "directories": {
     "lib": "./lib"
   },
@@ -13,7 +13,7 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/merijnponzo/strapi-provider-upload-sharpdigitalocean"
+    "url": "https://github.com/merijnponzo/strapi-provider-upload-sharpdigitalocean-next"
   },
   "strapi": {
     "isProvider": true
