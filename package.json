@@ -1,6 +1,6 @@
 {
   "name": "strapi-provider-upload-sharpdigitalocean-next",
-  "version": "4.0.6",
+  "version": "4.0.7",
   "description": "upload and rezize the original image to digital ocean spaces, with one thumbnail variant, resized by sharp (Strapi v4?)",
   "directories": {
     "lib": "./lib"
