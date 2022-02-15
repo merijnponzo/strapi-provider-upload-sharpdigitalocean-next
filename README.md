@@ -1,5 +1,7 @@
 # strapi-provider-upload-sharpdigitalocean-next
 
+Transforms every image to jpeg, should be optional though (needs to be fixed)
+
 ```
 yarn add strapi-provider-upload-sharpdigitalocean-next
 ```
@@ -14,56 +16,38 @@ npm install strapi-provider-upload-sharpdigitalocean-next
 
 ```
 
-
-This plugin resizes and optimize your image to you custom wishes
-And it creates one image variant, a thumbnail, also available in your upload_file model
-by the property 'thumb'
-
-### In strapi settings, go to medialibrary:
-
-- turn Enable responsive friendly upload to OFF
-- turn Enable size optimization (without quality loss) to OFF
-
-add
+strapi_folder/config/plugins.js
 
 ```
 
-"thumb": {
-"type": "string",
-"configurable": false,
-"required": true
-},
-
-```
-
-to extensions/upload/models/File.settings.json
-
-add
-
-```
-
+module.exports = ({ env }) => ({
 upload: {
-config:{
-provider: "sharpdigitalocean-next",
-providerOptions: {
-accessKeyId: "YOUR_ACCESS_KEY_ID",
-secretAccessKey: "YOUR_SECRET_ACCESS_KEY",
-endpoint: "YOUR_SPACE_ENDPOINT eg ny1.digitaloceanspaces.com",
-optimize: {
-size: 1000,
-thumbnail_size: 500,
+config: {
+breakpoints: {
+large: 1600,
+medium: 1100,
+small: 700,
 },
+provider: "strapi-provider-upload-sharpdigitalocean-next",
+providerOptions: {
+accessKeyId: env("AWS_ACCESS_KEY_ID"),
+secretAccessKey: env("AWS_ACCESS_SECRET"),
+endpoint: env("AWS_DOMAIN"),
 settings: {
-awsUploadFolder: "CUSTOM_FOLDER_NAME_IN_YOUR_BUCKET",
+awsUploadFolder: env("AWS_FOLDER"),
 },
 params: {
-Bucket: "YOUR_SPACE_BUCKET_NAME",
-}
+Bucket: env("AWS_BUCKET"),
 },
 },
 },
+},
+});
 
 ```
 
-to config/ENV/plugins.js
+note:
+AWS_DOMAIN should be the region and domain, for example using an ams3 at digital ocean gives the endpoint:
+ams3.digitaloceanspaces.com
+
 ```
