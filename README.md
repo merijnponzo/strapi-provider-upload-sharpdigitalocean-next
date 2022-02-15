@@ -43,6 +43,7 @@ add
 ```
 
 upload: {
+config:{
 provider: "sharpdigitalocean-next",
 providerOptions: {
 accessKeyId: "YOUR_ACCESS_KEY_ID",
@@ -57,6 +58,7 @@ awsUploadFolder: "CUSTOM_FOLDER_NAME_IN_YOUR_BUCKET",
 },
 params: {
 Bucket: "YOUR_SPACE_BUCKET_NAME",
+}
 },
 },
 },
